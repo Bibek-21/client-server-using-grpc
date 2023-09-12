@@ -1,9 +1,8 @@
 const express = require('express');
 const dotenv= require('dotenv')
 const grpc = require('@grpc/grpc-js')
-const db= require('./helper/mongoDb')
 const protoLoader= require('@grpc/proto-loader')
-dotenv.config()
+dotenv.config({path:'./.env'})
 app=  express();
 // require('../common/proto/simpleCrud.rpc.proto')
 // const protoPath  = `${__dirname}`

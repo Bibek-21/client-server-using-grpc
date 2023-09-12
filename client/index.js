@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser= require('body-parser');
-const firstRoute= require('./routes/')
+const firstRoute= require('./routes/index')
 const app = express();
 const port= process.env.PORT;
 app.use(bodyParser.json())
