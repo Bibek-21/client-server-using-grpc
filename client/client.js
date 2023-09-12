@@ -4,9 +4,12 @@ const protoLoader= require('@grpc/proto-loader');
 const dotenv= require('dotenv');
 
 (()=>{
+    const protoPath= `./../common/proto/simpleCrud.rpc.proto`
+    const envPath=`${__dirname}/.env`
+    dotenv.config({path:envPath})
     const portFromGrpc= process.env.PORTFROMGRPC;
-    dotenv.config({path:'./.env'})
-    const packageDefinition = protoLoader.loadSync('./proto/simpleCrud.rpc.proto', {
+
+    const packageDefinition = protoLoader.loadSync(protoPath, {
         keepCase: true,
         longs: 'string',
         defaults: true,
