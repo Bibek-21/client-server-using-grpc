@@ -2,9 +2,14 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader= require('@grpc/proto-loader');
 const dotenv= require('dotenv');
+const path= require('path');
 
 (()=>{
-    const protoPath= `./../common/proto/simpleCrud.rpc.proto`
+
+
+    const filePath =`${__dirname}`
+    const testPath= `./../common/proto/simpleCrud.rpc.proto`
+    const protoPath= `${filePath}/${testPath}`
     const envPath=`${__dirname}/.env`
     dotenv.config({path:envPath})
     const portFromGrpc= process.env.PORTFROMGRPC;
@@ -15,13 +20,13 @@ const dotenv= require('dotenv');
         defaults: true,
       })
 
-      const simpleProto = grpc.loadPackageDefinition(packageDefinition)
+      const protoDefinition = grpc.loadPackageDefinition(packageDefinition)
 
 
-      const SimpleCrudService = simpleProto.example.simpleCrud.rpc.SimpleCrudService;
+      const SimpleCrudService = protoDefinition.example.simpleCrud.rpc.simpleCrudService;
     
       const client = new SimpleCrudService(
-          `localhost:${portFromGrpc}`,
+          `localhost:3000`,
           grpc.credentials.createInsecure()
       );
 
