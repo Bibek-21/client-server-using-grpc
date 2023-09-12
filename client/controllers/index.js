@@ -1,18 +1,18 @@
 "use strict";
-const client= require('../client')
 (()=>{
+    const client= require('../client')
 
-    exports.createStudents=async(reques,res)=>{
+    exports.createStudents=async(request,res)=>{
 
         try {
-            const FirstName= request.query;
-            const LastName= request.query;
-            const CRN= request.query;
-            const Contact= request.query;
-            const DOB= request.query;
-            const Guardian= request.query;
-            const Address=request.query;
-            const IsDeleted= request.query;
+            const FirstName= request.body.FirstName;
+            const LastName= request.body.LastName;
+            const CRN= request.body.CRN;
+            const Contact= request.body.Contact;
+            const DOB= request.body.DOB;
+            const Guardian= request.body.Guardian;
+            const Address=request.body.Address;
+            const IsDeleted= request.body.IsDeleted;
 
             client.create((
                 FirstName,

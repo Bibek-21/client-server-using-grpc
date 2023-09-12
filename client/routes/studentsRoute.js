@@ -1,10 +1,11 @@
-const express= require('express');
-const controller= require('./../controllers/index')
-(()=>{
-const router=express.Router()
+const express = require('express');
+(() => {
+    const controller = require('./../controllers/index')
 
-router.post('/createstudents',controller.createStudents);
+    const router = express.Router()
+
+    router.post('/createstudents', controller.createStudents);
 
 
-module.exports = router;
+    module.exports = router;
 })();
