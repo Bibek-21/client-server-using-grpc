@@ -5,24 +5,8 @@
     exports.createStudents=async(request,res)=>{
 
         try {
-            const FirstName= request.body.FirstName;
-            const LastName= request.body.LastName;
-            const CRN= request.body.CRN;
-            const Contact= request.body.Contact;
-            const DOB= request.body.DOB;
-            const Guardian= request.body.Guardian;
-            const Address=request.body.Address;
-            const IsDeleted= request.body.IsDeleted;
-
-            client.create((
-                FirstName,
-                LastName,
-                CRN,
-                Contact,
-                DOB,
-                Guardian,
-                Address,
-                IsDeleted),
+           
+            client.create(request.body,
                 (err,data)=>{
                     if(err){
                         res.status(400).send(err)
@@ -39,8 +23,114 @@
                 
                 )
         } catch (error) {
+            res.send(`Error occured ${error}`)
             
         }
-        } 
+        }
+        
+        
+
+        exports.readAllStudents=async(request,res)=>{
+
+            try {
+               
+                client.readAll(request,         //this must be taken from .rpc.proto service rpc name
+                    (err,data)=>{
+                        if(err){
+                            res.status(400).send(err)
+                        }
+    
+                        else{
+    
+                            res.status(200).send(data)
+                        }
+    
+    
+    
+                    }
+                    
+                    )
+            } 
+            catch (error) {
+                res.send(`Error occured ${error}`)
+                
+            }
+            } 
+
+
+            exports.readStudents=async(request,res)=>{
+
+                try {
+                   
+                    client.read((request.body),
+                        (err,data)=>{
+                            if(err){
+                                res.status(400).send(err)
+                            }
+        
+                            else{
+        
+                                res.status(200).send(data)
+                            }
+        
+        
+        
+                        }
+                        
+                        )
+                } catch (error) {
+                    res.send(`Error occured ${error}`)
+                    
+                }
+                } 
+
+            exports.updateStudents=async(request,res)=>{
+
+                try {
+                   
+                    client.update(request.body,
+                        (err,data)=>{
+                            if(err){
+                                res.status(400).send(err)
+                            }
+        
+                            else{
+        
+                                res.status(200).send(data)
+                            }
+        
+    
+                        }
+                        
+                        )
+                } catch (error) {
+                    res.send(`Error occured ${error}`)
+                    
+                }
+                } 
+
+
+                exports.deleteStudents=async(request,res)=>{
+
+                    try {
+                        client.delete(request.body,
+                            (err,data)=>{
+                                if(err){
+                                    res.status(400).send(err)
+                                }
+            
+                                else{
+            
+                                    res.status(200).send(data)
+                                }
+            
+                            }
+                            
+                            )
+                    } catch (error) {
+                        res.send(`Error occured ${error}`)
+                        
+                    }
+                    } 
 
 })();

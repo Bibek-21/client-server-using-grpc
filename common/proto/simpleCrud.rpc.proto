@@ -8,5 +8,4 @@ rpc read (example.simpleCrud.requestId) returns (example.simpleCrud.details);
 rpc readAll (example.simpleCrud.empty) returns (example.simpleCrud.readAll);
 rpc update (example.simpleCrud.updateRequest) returns (example.simpleCrud.response);
 rpc delete (example.simpleCrud.requestId) returns (example.simpleCrud.response);
-
 }
