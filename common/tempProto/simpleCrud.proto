@@ -1,0 +1,103 @@
+syntax = "proto3";
+package example.simpleCrud.rpc;
+import "google/api/annotations.proto";
+
+// Generated according to https://cloud.google.com/apis/design/standard_methods
+service simpleCrudService {
+ 
+
+  rpc readAll(example.simpleCrud.empty) returns (example.simpleCrud.readAll) {
+    option (google.api.http) = {
+      get: "/user/readall"
+      body: "*"
+    };
+  }
+
+  rpc read(example.simpleCrud.requestId) returns (example.simpleCrud.details) {
+    option (google.api.http) = {
+      get: "/user/read"
+    };
+  }
+
+
+  rpc create(example.simpleCrud.createRequest) returns (example.simpleCrud.response) {
+    option (google.api.http) = {
+      post: "/user/create"
+      body: "Type"
+    };
+  }
+
+  rpc update(example.simpleCrud.updateRequest) returns (example.simpleCrud.response) {
+    option (google.api.http) = {
+      put: "/user/update"
+      body: "Type"
+    };
+  }
+
+  rpc delete(example.simpleCrud.requestId) returns (example.simpleCrud.response) {
+    option (google.api.http) = {
+      delete: "/user/delete"
+    };
+  }
+}
+
+
+
+
+message createRequest
+ {
+    string FirstName = 1;
+    string LastName = 2;
+    int32 CRN = 3;
+    int64 Contact= 4;
+    string DOB = 5;
+    string Guardian = 6;
+    string Address=7;
+    bool IsDeleted=8;
+}
+
+message response{
+    int32 status =1;
+    string message =2;
+}
+
+message empty {
+    
+}
+
+message readAll{
+    repeated details data =1;
+}
+
+
+message updateRequest{
+    string id=0;
+    string FirstName = 1;
+    string LastName = 2;
+    int32 CRN = 3;
+    int64 Contact= 4;
+    string DOB = 5;
+    string Guardian = 6;
+    string Address=7;
+    bool IsDeleted=8;
+}
+
+message requestId{
+    string id=1;
+
+}
+
+
+
+message details{
+    string FirstName = 1;
+    string LastName = 2;
+    int32 CRN = 3;
+    int64 Contact= 4;
+    string DOB = 5;
+    string Guardian = 6;
+    string Address=7;
+    bool IsDeleted=8;
+}
+
+
